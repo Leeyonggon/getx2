@@ -5,4 +5,8 @@ class CartController extends GetxController {
   var cart = <Product>[].obs;
 
   int get counted => cart.length;
+
+  void addToitem(Product p) {
+    cart.add(p);
+  }
 }

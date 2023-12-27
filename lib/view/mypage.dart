@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_shoppoinglist/controller/cart_controller.dart';
 import 'package:getx_shoppoinglist/view/product_tile.dart';
 import '../controller/controller.dart';
 
@@ -7,6 +8,7 @@ class MyPage extends StatelessWidget {
   MyPage({super.key});
 
   final controller = Get.put(Controller());
+  final cartcontroller = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +49,12 @@ class MyPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {},
-        label: const Text(
-          'item',
-          style: TextStyle(fontSize: 20, color: Colors.white),
-        ),
+        label: GetX<CartController>(builder: (controller) {
+          return Text(
+            controller.counted.toString(),
+            style: const TextStyle(fontSize: 20, color: Colors.white),
+          );
+        }),
         icon: const Icon(
           Icons.shopping_cart,
           color: Colors.white,

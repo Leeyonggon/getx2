@@ -11,6 +11,12 @@ class Controller extends GetxController {
     fetchData();
   }
 
+  int get counted => productList.length;
+
+  void addToitem(Product p) {
+    productList.add(p);
+  }
+
   void fetchData() async {
     var products = await Services.fetchProducts();
 

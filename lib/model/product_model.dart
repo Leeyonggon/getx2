@@ -29,6 +29,7 @@ class Product {
   List<ProductColor> productColors;
 
   var like = false.obs;
+  var amount = 0.obs;
 
   Product({
     required this.id,

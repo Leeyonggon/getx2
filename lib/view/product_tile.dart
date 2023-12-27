@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_shoppoinglist/controller/cart_controller.dart';
+import 'package:getx_shoppoinglist/controller/controller.dart';
 import '../model/product_model.dart';
 
 class ProductTile extends StatelessWidget {
-  const ProductTile(this.product, {super.key});
+  ProductTile(this.product, {super.key});
   final Product product;
+  final cartcontroller = Get.put(CartController());
+  final controller1 = Get.put(Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -80,17 +84,22 @@ class ProductTile extends StatelessWidget {
             SizedBox(
               height: 25,
               width: 120,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  minimumSize: const Size.fromHeight(50),
-                ),
-                child: const Text(
-                  'Add to Cart',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              child: GetX<Controller>(builder: (controller) {
+                return ElevatedButton(
+                  onPressed: () {
+                    controller.addToitem(
+                        controller.productList[product.amount.value]);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    minimumSize: const Size.fromHeight(50),
+                  ),
+                  child: const Text(
+                    'Add to Cart',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                );
+              }),
             ),
           ]),
           const SizedBox(height: 8),
