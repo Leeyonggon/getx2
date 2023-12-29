@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 
+//https://app.quicktype.io/   json data 모델 변환 사이트 사용
+
 List<Product> productFromJson(String str) =>
     List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
 
