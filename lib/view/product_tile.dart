@@ -84,11 +84,11 @@ class ProductTile extends StatelessWidget {
             SizedBox(
               height: 25,
               width: 120,
-              child: GetX<Controller>(builder: (controller) {
+              child: GetX<CartController>(builder: (controller) {
                 return ElevatedButton(
                   onPressed: () {
-                    controller.addToitem(controller
-                        .productList[product.amount.value]); // 오류발생 코드
+                    controller.addToitem(
+                        controller.cart[product.amount.value]); // 오류발생 코드
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
