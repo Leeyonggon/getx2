@@ -8,7 +8,6 @@ class MyPage extends StatelessWidget {
   MyPage({super.key});
 
   final controller = Get.put(Controller());
-  final cartcontroller = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {

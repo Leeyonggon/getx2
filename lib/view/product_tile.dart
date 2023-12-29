@@ -87,8 +87,8 @@ class ProductTile extends StatelessWidget {
               child: GetX<Controller>(builder: (controller) {
                 return ElevatedButton(
                   onPressed: () {
-                    controller.addToitem(
-                        controller.productList[product.amount.value]);
+                    controller.addToitem(controller
+                        .productList[product.amount.value]); // 오류발생 코드
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,

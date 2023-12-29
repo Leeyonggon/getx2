@@ -3,15 +3,18 @@ import 'package:http/http.dart' as http;
 
 //static이 붙은 변수나 함수는 클래스 객채를 생성하지않고도 사용 이미 메모리에 할당되어있음
 class Services {
-  static var client = http.Client();
+  static var client = http.Client(); // http client로 json형식의 데이터를 가져오도록 하는 class
 
   static Future<List<Product>?> fetchProducts() async {
+    // http통신이므로 Future 타입과 async 비동기방식 사용
     var reponse = await client.get(Uri.parse(
         'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline'));
 
     if (reponse.statusCode == 200) {
+      //http 통신이 정상적으로 작동했다면 body의 data를 가져오게 함
       var jsonData = reponse.body;
-      return productFromJson(jsonData);
+      return productFromJson(
+          jsonData); // productmodel class로 body 데이터를 보내서 해당 model에서 값의 변화를 확인
     } else {
       return null;
     }
